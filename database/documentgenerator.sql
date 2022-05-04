@@ -18,6 +18,8 @@
 --
 -- Table structure for table `templates`
 --
+create database documentgenerator;
+use documentgenerator;
 
 DROP TABLE IF EXISTS `templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
