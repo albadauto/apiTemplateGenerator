@@ -9,6 +9,7 @@ module.exports.generateDocument = async (request, response) => {
     try{
         const idVotante = request.params.idVotante
         const result = await axios.get(`${process.env.API_BASE_URI}/eventos/7747/votante/${idVotante}`, apiConfig); //5444527
+        console.log(result.status)
         const resultObj = {
             event: "Eleição Panagora", 
             votante: `${result.data.nome}`,
@@ -20,7 +21,11 @@ module.exports.generateDocument = async (request, response) => {
             isInserted: inserted
         });
     }catch(err){
-        console.log(err);
+        if(err.response.status){
+            response.status(404).json({
+                msg: "Votante não encontrado!"
+            })
+        };
     }
     
 }
@@ -79,6 +84,10 @@ module.exports.createNewPdfDocument = async(request, response) => {
         })
 
     }catch(err){
-        console.log(err);
+        if(err.response.status){
+            response.status(404).json({
+                msg: "Votante não encontrado!"
+            })
+        };
     }
 }

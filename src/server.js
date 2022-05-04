@@ -17,7 +17,7 @@ app.use('/public', express.static(path.join(__dirname, "../public")))
 //ROUTES
 app.use("/documents", documentRouter);
 app.use("/", (request, response) => {
-    response.status(200).json({message:"API IS RUNNING"})
+    response.status(200).json({message:"Rota não existente!"})
 });
 
 //DATABASE
